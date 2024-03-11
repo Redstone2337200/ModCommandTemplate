@@ -31,19 +31,18 @@ public class TestReforgedCommands {
                 run.getSource().getPlayer())
             )
         );
-        
 
         dispatcher.register(literal("info")
             .requires(c -> c.hasPermissionLevel(4))
             .then(literal(mainArray[0])
-                .executes(d -> executeStepBook(d.getSource()))
+                .executes(b -> executeStepBook(b.getSource()))
                 .then(argument("value", IntegerArgumentType.integer(TestModInfos.TestModValues.min,TestModInfos.TestModValues.max)))
                 .executes(run -> getText(mainArray[0], IntegerArgumentType.getInteger(run, "value"),
                     run.getSource().getPlayer())
                 )
             )
             .then(literal(mainArray[1])
-                .executes(e -> executeStepText(e.getSource()))
+                .executes(a -> executeStepText(a.getSource()))
                 .then(argument("value", IntegerArgumentType.integer(TestModInfos.TestModValues.min,TestModInfos.TestModValues.max)))
                 .executes(run -> getText(mainArray[1], IntegerArgumentType.getInteger(run, "value"),
                     run.getSource().getPlayer())
@@ -91,46 +90,46 @@ public class TestReforgedCommands {
                             run.getSource().getPlayer())
                 )
             )
-        // 这里是普通模式    
             .requires(src -> src.hasPermissionLevel(2))
             .then(literal(typeArray[1]))
-            .executes(f -> executeStep(f.getSource()))
-                .then(literal(infoArray[0])).executes(g -> executeStep(g.getSource())).then(argument("value", IntegerArgumentType.integer())
+            .executes(a -> executeStep(a.getSource()))
+                .then(literal(infoArray[0])).executes(b -> executeStep(b.getSource())).then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[0],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(infoArray[1])).executes(g -> executeStep(g.getSource())).then(argument("value", IntegerArgumentType.integer())
+                .then(literal(infoArray[1])).executes(b -> executeStep(b.getSource())).then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[1],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(infoArray[2])).executes(g -> executeStep(g.getSource())).then(argument("value", IntegerArgumentType.integer())
+                .then(literal(infoArray[2])).executes(b -> executeStep(b.getSource()))
+                .then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[2], infoArray[1],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(infoArray[3])).executes(g -> executeStep(g.getSource())).then(argument("value", IntegerArgumentType.integer())
+                .then(literal(infoArray[3])).executes(b -> executeStep(b.getSource())).then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[3],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
                     )
-                )
-                
-                .then(literal(infoArray[4])).executes(g -> executeStep(g.getSource())).then(argument("value", IntegerArgumentType.integer())
+                .then(literal(infoArray[4])).executes(b -> executeStep(b.getSource()))
+                .then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[4],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(infoArray[5])).executes(g -> executeStep(g.getSource())).then(argument("value", IntegerArgumentType.integer())
+                .then(literal(infoArray[5])).executes(b -> executeStep(b.getSource())).then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[5],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
+                )
             )
         );
     }
