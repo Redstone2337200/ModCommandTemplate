@@ -15,7 +15,7 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 import static net.minecraft.server.command.CommandManager.argument;
 
-public class TestModCommands {
+public class TestReforgedCommands {
 
     public static String[] typeArray = { "trifunc", "deffunc" };
     public static String[] mainArray = { "book", "text" };
