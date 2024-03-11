@@ -31,6 +31,7 @@ public class TestReforgedCommands {
                 run.getSource().getPlayer())
             )
         );
+        
 
         dispatcher.register(literal("info")
             .requires(c -> c.hasPermissionLevel(4))
