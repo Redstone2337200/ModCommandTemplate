@@ -112,7 +112,7 @@ public class TestReforgedCommands {
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(infoArray[3])).executes(g -> executeStep(g.getSource()).then(argument("value", IntegerArgumentType.integer())
+                .then(literal(infoArray[3])).executes(g -> executeStep(g.getSource())).then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[3],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
