@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.redstone233.reforged.testmod.commands.TestModCommands;
+import com.redstone233.reforged.testmod.commands.TestReforgedCommands;
 
 public class TestReforgedMod implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
