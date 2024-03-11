@@ -226,6 +226,7 @@ public class TestReforgedCommands {
             player.sendMessage((Text) new LiteralMessage(TestModInfos.TestModTexts.a));
             return Command.SINGLE_SUCCESS;
         }
+        return 0;
     }
 
     private static int runTrig(String type, String name, double angle, PlayerEntity player) {
@@ -258,6 +259,7 @@ public class TestReforgedCommands {
             }
             return Command.SINGLE_SUCCESS;
         }
+        return 0;
     }
 
     private static int runDefe(String type, String name, double value, PlayerEntity player) {
@@ -292,6 +294,7 @@ public class TestReforgedCommands {
             }
             return Command.SINGLE_SUCCESS;
         }
+        return 0;
     }
 
     public static int getSuccess(int slot, PlayerEntity player) {
