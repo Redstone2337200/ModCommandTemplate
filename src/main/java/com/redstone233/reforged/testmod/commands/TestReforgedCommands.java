@@ -40,8 +40,7 @@ public class TestReforgedCommands {
                 .executes(run -> getText(mainArray[0], IntegerArgumentType.getInteger(run, "value"),
                     run.getSource().getPlayer())
                 )
-            )
-            .then(literal(mainArray[1])
+            ).requires(c -> c.hasPermissionLevel(4)).then(literal(mainArray[1])
                 .executes(a -> executeStepText(a.getSource()))
                 .then(argument("value", IntegerArgumentType.integer(TestModInfos.TestModValues.min,TestModInfos.TestModValues.max)))
                 .executes(run -> getText(mainArray[1], IntegerArgumentType.getInteger(run, "value"),
@@ -60,42 +59,42 @@ public class TestReforgedCommands {
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                         )
-                    )
+                    ).requires(c -> c.hasPermissionLevel(2))
                 .then(literal(nameArray[1])).executes(b -> executeStepTrig(b.getSource()))
                 .then(argument("angle", IntegerArgumentType.integer())
                     .executes(run -> runTrig(typeArray[0], nameArray[1],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                         )
-                    )
+                    ).requires(c -> c.hasPermissionLevel(2))
                 .then(literal(nameArray[2])).executes(b -> executeStepTrig(b.getSource()))
                 .then(argument("angle", IntegerArgumentType.integer())
                     .executes(run -> runTrig(typeArray[0], nameArray[2],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                         )
-                    )
+                    ).requires(c -> c.hasPermissionLevel(2))
                 .then(literal(nameArray[3])).executes(b -> executeStepTrig(b.getSource()))
                 .then(argument("angle", IntegerArgumentType.integer())
                     .executes(run -> runTrig(typeArray[0], nameArray[3],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                         )
-                    )
+                    ).requires(c -> c.hasPermissionLevel(2))
                 .then(literal(nameArray[4])).executes(b -> executeStepTrig(b.getSource()))
                 .then(argument("angle", IntegerArgumentType.integer())
                     .executes(run -> runTrig(typeArray[0], nameArray[4],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                         )
-                    )
+                    ).requires(c -> c.hasPermissionLevel(2))
                 .then(literal(nameArray[5])).executes(b -> executeStepTrig(b.getSource()))
                     .then(argument("angle", IntegerArgumentType.integer())
                     .executes(run -> runTrig(typeArray[0], nameArray[5],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                 )
-            )
+            ).requires(c -> c.hasPermissionLevel(2))
             .requires(src -> src.hasPermissionLevel(2))
             .then(literal(typeArray[1]))
             .executes(a -> executeStep(a.getSource()))
@@ -105,35 +104,35 @@ public class TestReforgedCommands {
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
-                    )
+                    ).requires(c -> c.hasPermissionLevel(2))
                 .then(literal(infoArray[1])).executes(b -> executeStep(b.getSource()))
                 .then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[1],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
-                    )
+                    ).requires(c -> c.hasPermissionLevel(2))
                 .then(literal(infoArray[2])).executes(b -> executeStep(b.getSource()))
                 .then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[2], infoArray[1],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
-                    )
+                    ).requires(c -> c.hasPermissionLevel(2))
                 .then(literal(infoArray[3])).executes(b -> executeStep(b.getSource()))
                 .then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[3],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
-                    )
+                    ).requires(c -> c.hasPermissionLevel(2))
                 .then(literal(infoArray[4])).executes(b -> executeStep(b.getSource()))
                 .then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[4],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
-                    )
+                    ).requires(c -> c.hasPermissionLevel(2))
                 .then(literal(infoArray[5])).executes(b -> executeStep(b.getSource()))
                     .then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[5],
