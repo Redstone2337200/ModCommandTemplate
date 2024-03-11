@@ -12,7 +12,7 @@
 		"sources": "https://github.com/Redstone2337200/ModCommandTemplate"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/testreforgedmod/icon.png",
+	"icon": "assets/testreforgedmod/trc.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
