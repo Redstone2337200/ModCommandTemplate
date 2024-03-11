@@ -131,7 +131,6 @@ public class TestReforgedCommands {
                     .executes(run -> runDefe(typeArray[1], infoArray[5],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
-                )
             )
         );
     }
