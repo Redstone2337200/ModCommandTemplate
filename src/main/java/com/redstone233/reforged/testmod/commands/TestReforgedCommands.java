@@ -224,17 +224,17 @@ public class TestReforgedCommands {
             }
         } else if (type == "text") {
             player.sendMessage((Text) new LiteralMessage(TestModInfos.TestModTexts.a));
-            //return Command.SINGLE_SUCCESS;
+            return Command.SINGLE_SUCCESS;
         }
-        return 1;
     }
 
     private static int runTrig(String type, String name, double angle, PlayerEntity player) {
         // String[] typeArray = {"trifunc","deffunc"};
         // String[] nameArray = { "sin", "cos", "tan", "asin", "acos", "atan" };
         double value = Math.toRadians(angle);
-        if (type == null || name == null || angle == value) {
+        if (type == null || name == null || angle != value) {
             player.sendMessage((Text) new LiteralMessage("This command runninng error!"), false);
+            return 0;
         } else if (type == typeArray[0]) {
             if (name == nameArray[0]) {
                 player.sendMessage((Text) new LiteralMessage("Angle" + angle + "sine is" + Math.sin(value)), false);
@@ -258,13 +258,13 @@ public class TestReforgedCommands {
             }
             return Command.SINGLE_SUCCESS;
         }
-        return 0;
     }
 
     private static int runDefe(String type, String name, double value, PlayerEntity player) {
         //String[] infoArray = { "abs", "sqrt", "cbrt", "ceil", "floor", "round" };
         if (type == null || name == null || value == 0) {
             player.sendMessage((Text) new LiteralMessage("This command runninng error!"), false);
+            return 0;
         } else if (type == typeArray[1]) {
             if (name == infoArray[0]) {
                 player.sendMessage((Text) new LiteralMessage("Value" + value + "absolute value is" + Math.abs(value)),
@@ -292,7 +292,6 @@ public class TestReforgedCommands {
             }
             return Command.SINGLE_SUCCESS;
         }
-        return 0;
     }
 
     public static int getSuccess(int slot, PlayerEntity player) {
