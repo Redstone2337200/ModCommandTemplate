@@ -52,7 +52,7 @@ public class TestReforgedCommands {
 
         dispatcher.register(literal("math")
             .requires(t -> t.hasPermissionLevel(2))
-            .then(literal(typeArray[0]))
+            .then(literal(typeArray[0])
             .executes(a -> executeStepTrig(a.getSource()))
                 .then(literal(typeArray[0])).executes(b -> executeStepTrig(b.getSource())).then(argument("angle", IntegerArgumentType.integer())
                     .executes(run -> runTrig(typeArray[0], nameArray[0],
@@ -87,11 +87,14 @@ public class TestReforgedCommands {
                 .then(literal(nameArray[5])).executes(b -> executeStepTrig(b.getSource())).then(argument("angle", IntegerArgumentType.integer())
                     .executes(run -> runTrig(typeArray[0], nameArray[5],
                         IntegerArgumentType.getInteger(run, "angle"),
-                            run.getSource().getPlayer())
+                run.getSource().getPlayer()
+                    )
                 )
             )
+        )
+        //第2部分
             .requires(src -> src.hasPermissionLevel(2))
-            .then(literal(typeArray[1]))
+            .then(literal(typeArray[1])
             .executes(a -> executeStep(a.getSource()))
                 .then(literal(infoArray[0])).executes(b -> executeStep(b.getSource())).then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[0],
@@ -128,11 +131,13 @@ public class TestReforgedCommands {
                 .then(literal(infoArray[5])).executes(b -> executeStep(b.getSource())).then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[5],
                         IntegerArgumentType.getInteger(run, "value"),
-                            run.getSource().getPlayer())
+                run.getSource().getPlayer()
+                    )
                 )
             )
-        );
-    }
+        )
+    );
+}
 
     private static int executeStepTrig(ServerCommandSource source) {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
