@@ -1,0 +1,10 @@
+{
+	"commands.math.trip.success": "命令Math执行成功，%s！",
+    "commands.math.defa.success": "命令Math执行成功，%s！",
+    "commands.info.text.success": "命令Info执行成功，%s！",
+    "commands.info.book.success": "命令Info执行成功，%s！",
+    "commands.info.book.fail": "命令Info执行失败，%s！",
+    "commands.info.text.fail": "命令Info执行失败，%s！",
+    "commands.math.defa.fail": "命令Math执行失败，%s！",
+    "commands.math.trip.fail": "命令Math执行失败，%s！"
+}

@@ -1,0 +1,10 @@
+{
+	"commands.math.trip.success": "This math command to run success%s!",
+    "commands.math.defa.success": "This math command to run success%s!",
+    "commands.info.text.success": "This info command to run success%s!",
+    "commands.info.book.success": "This info command to run success%s!",
+    "commands.info.book.fail": "This info command running faild%s!",
+    "commands.info.text.fail": "This info command running faild%s!",
+    "commands.math.defa.fail": "This math command running faild%s!",
+    "commands.math.trip.fail": "This math command running faild%s!"
+}
