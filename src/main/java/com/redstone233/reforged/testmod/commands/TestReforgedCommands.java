@@ -29,6 +29,7 @@ public class TestReforgedCommands {
             .requires(src -> src.hasPermissionLevel(4))
             .executes(run -> getSuccess(IntegerArgumentType.getInteger(run, "slot"),
                 run.getSource().getPlayer())
+                return 1;
             )
         );
 
@@ -39,6 +40,7 @@ public class TestReforgedCommands {
                 .then(argument("value", IntegerArgumentType.integer(TestModInfos.TestModValues.min,TestModInfos.TestModValues.max)))
                 .executes(run -> getText(mainArray[0], IntegerArgumentType.getInteger(run, "value"),
                     run.getSource().getPlayer())
+                    return 1;
                 )
             )
             .then(literal(mainArray[1])
@@ -46,6 +48,7 @@ public class TestReforgedCommands {
                 .then(argument("value", IntegerArgumentType.integer(TestModInfos.TestModValues.min,TestModInfos.TestModValues.max)))
                 .executes(run -> getText(mainArray[1], IntegerArgumentType.getInteger(run, "value"),
                     run.getSource().getPlayer())
+                    return 1;
                 )
             )
         );
@@ -60,6 +63,7 @@ public class TestReforgedCommands {
                     .executes(run -> runTrig(typeArray[0], nameArray[0],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
+                            return 1;
                         )
                     )
                 )
@@ -69,6 +73,7 @@ public class TestReforgedCommands {
                     .executes(run -> runTrig(typeArray[0], nameArray[1],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
+                            return 1;
                         )
                     )
                 )    
@@ -78,6 +83,7 @@ public class TestReforgedCommands {
                             .executes(run -> runTrig(typeArray[0], nameArray[2],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
+                            return 1;
                         )
                     )
                 )
@@ -87,6 +93,7 @@ public class TestReforgedCommands {
                             .executes(run -> runTrig(typeArray[0], nameArray[3],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
+                            return 1;
                         )
                     )
                 )
@@ -96,6 +103,7 @@ public class TestReforgedCommands {
                             .executes(run -> runTrig(typeArray[0], nameArray[4],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
+                            return 1;
                         )
                     )
                 )
@@ -105,6 +113,7 @@ public class TestReforgedCommands {
                             .executes(run -> runTrig(typeArray[0], nameArray[5],
                         IntegerArgumentType.getInteger(run, "angle"),
                 run.getSource().getPlayer()
+                return 1;
                     )
                 )
             )
@@ -120,6 +129,7 @@ public class TestReforgedCommands {
                     .executes(run -> runDefe(typeArray[1], infoArray[0],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
+                            return 1;
                         )
                     )
                 )
@@ -129,6 +139,7 @@ public class TestReforgedCommands {
                             .executes(run -> runDefe(typeArray[1], infoArray[1],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
+                            return 1;
                         )
                     )
                 )
@@ -138,6 +149,7 @@ public class TestReforgedCommands {
                         .executes(run -> runDefe(typeArray[1], infoArray[2],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
+                            return 1;
                         )
                     )
                 )
@@ -147,6 +159,7 @@ public class TestReforgedCommands {
                             .executes(run -> runDefe(typeArray[1], infoArray[3],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
+                            return 1;
                         )
                     )
                 )
@@ -156,6 +169,7 @@ public class TestReforgedCommands {
                         .executes(run -> runDefe(typeArray[1], infoArray[4],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
+                            return 1;
                         )
                     )
                 )
@@ -165,6 +179,7 @@ public class TestReforgedCommands {
                             .executes(run -> runDefe(typeArray[1], infoArray[5],
                         IntegerArgumentType.getInteger(run, "value"),
                 run.getSource().getPlayer()
+                return 1;
                     )
                 )
             )
