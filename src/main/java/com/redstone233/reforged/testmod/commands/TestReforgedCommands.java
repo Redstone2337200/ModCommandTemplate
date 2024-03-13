@@ -25,10 +25,11 @@ public class TestReforgedCommands {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(literal("nbt")
             .requires(src -> src.hasPermissionLevel(4))
-            .then(argument("slot", IntegerArgumentType.integer()))
+            .then(argument("slot", IntegerArgumentType.integer())
             .requires(src -> src.hasPermissionLevel(4))
             .executes(run -> getSuccess(IntegerArgumentType.getInteger(run, "slot"),
                 run.getSource().getPlayer())
+                )
             )
         );
 
@@ -36,9 +37,10 @@ public class TestReforgedCommands {
             .requires(c -> c.hasPermissionLevel(4))
             .then(literal(mainArray[0])
                 .executes(b -> executeStepBook(b.getSource()))
-                .then(argument("value", IntegerArgumentType.integer(TestModInfos.TestModValues.min,TestModInfos.TestModValues.max)))
+                .then(argument("value", IntegerArgumentType.integer(TestModInfos.TestModValues.min,TestModInfos.TestModValues.max))
                 .executes(run -> getText(mainArray[0], IntegerArgumentType.getInteger(run, "value"),
                     run.getSource().getPlayer())
+                    )
                 )
             )
             .then(literal(mainArray[1])
