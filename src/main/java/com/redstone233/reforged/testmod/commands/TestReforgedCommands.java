@@ -56,7 +56,7 @@ public class TestReforgedCommands {
             .requires(t -> t.hasPermissionLevel(2))
             .then(literal(typeArray[0])
             .executes(a -> executeStepTrig(a.getSource()))
-                .then(literal(typeArray[0])
+                .then(literal(nameArray[0])
                     .executes(b -> executeStepTrig(b.getSource()))
                         .then(argument("angle", IntegerArgumentType.integer())
                     .executes(run -> runTrig(typeArray[0], nameArray[0],
