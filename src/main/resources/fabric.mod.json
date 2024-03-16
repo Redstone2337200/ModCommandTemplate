@@ -22,16 +22,20 @@
 			"com.redstone233.reforged.testmod.TestReforgedModDataGenerator"
 		]
 	},
-	"custom": {
-        "modmenu": {
-            "parent": {
-		    "id": "trsm"
-	    		}
-        	}
-    	},
 	"mixins": [
 		"testreforgedmod.mixins.json"
 	],
+	"custom": {
+    		"modmenu": {
+        	"parent": {
+            		"id": "reforged",
+            		"name": "Reforged API",
+            		"description": "This is a simple front module.",
+            		"icon": "assets/testreforgedmod/reforged_library.png",
+            		"badges": [ "library" ]
+        		}
+    		}
+	},
 	"depends": {
 		"fabricloader": ">=0.15.7",
 		"minecraft": "~1.20.4",
