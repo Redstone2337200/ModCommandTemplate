@@ -28,7 +28,7 @@
 	"custom": {
     		"modmenu": {
         	"parent": {
-            		"id": "reforged",
+            		"id": "reforgedapi",
             		"badges": [ "library" ]
         		}
     		}
@@ -39,7 +39,7 @@
 		"java": ">=17",
 		"fabric-api": "*",
 		"trsm": "1.0.0+build.1",
-		"reforged": ">=0.0.1+build.1"
+		"reforgedapi": ">=0.0.1+build.1"
 	},
 	"suggests": {
 		"another-mod": "*"
