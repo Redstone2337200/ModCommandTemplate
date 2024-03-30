@@ -4,6 +4,7 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.LiteralMessage;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.redstone233.reforged.testmod.TestModInfos;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -175,7 +176,7 @@ public class TestReforgedCommands {
     );
 }
 
-    private static int executeStepTrig(ServerCommandSource source) {
+    private static int executeStepTrig(ServerCommandSource source) throws CommandSyntaxException {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
         if (bl) {
@@ -189,7 +190,7 @@ public class TestReforgedCommands {
         }
     }
 
-    private static int executeStep(ServerCommandSource source) {
+    private static int executeStep(ServerCommandSource source) throws CommandSyntaxException {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
         if (bl) {
@@ -203,7 +204,7 @@ public class TestReforgedCommands {
         }
     }
 
-    private static int executeStepText(ServerCommandSource source) {
+    private static int executeStepText(ServerCommandSource source) throws CommandSyntaxException {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
         if (bl) {
@@ -232,7 +233,7 @@ public class TestReforgedCommands {
     }
 
 
-    private static int getText(String type, int value, PlayerEntity player) {
+    private static int getText(String type, int value, PlayerEntity player) throws CommandSyntaxException {
         if (type == null) {
             player.sendMessage((Text) new LiteralMessage(type));
             player.sendMessage((Text) new LiteralMessage("This Commands running failed!"), false);
@@ -265,7 +266,7 @@ public class TestReforgedCommands {
         return 0;
     }
 
-    private static int runTrig(String type, String name, double angle, PlayerEntity player) {
+    private static int runTrig(String type, String name, double angle, PlayerEntity player) throws CommandSyntaxException {
         // String[] typeArray = {"trifunc","deffunc"};
         // String[] nameArray = { "sin", "cos", "tan", "asin", "acos", "atan" };
         double value = Math.toRadians(angle);
@@ -298,7 +299,7 @@ public class TestReforgedCommands {
         return 0;
     }
 
-    private static int runDefe(String type, String name, double value, PlayerEntity player) {
+    private static int runDefe(String type, String name, double value, PlayerEntity player) throws CommandSyntaxException {
         //String[] infoArray = { "abs", "sqrt", "cbrt", "ceil", "floor", "round" };
         if (type == null || name == null || value == 0) {
             player.sendMessage((Text) new LiteralMessage("This command runninng error!"), false);
@@ -333,7 +334,7 @@ public class TestReforgedCommands {
         return 0;
     }
 
-    public static int getSuccess(int slot, PlayerEntity player) {
+    public static int getSuccess(int slot, PlayerEntity player) throws CommandSyntaxException {
         if (slot >= 0 && slot <= 40) {
             ItemStack stack = player.getInventory().getStack(slot);
             if (stack.hasNbt()) {
