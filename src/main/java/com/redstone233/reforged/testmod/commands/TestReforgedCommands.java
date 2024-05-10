@@ -179,7 +179,7 @@ public class TestReforgedCommands {
     private static int executeStepTrig(ServerCommandSource source) throws CommandSyntaxException {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
-        if (bl) {
+        if (!bl) {
         source.sendFeedback(() -> {
             return Text.translatable("commands.math.trip.success");
         }, true);
@@ -193,7 +193,7 @@ public class TestReforgedCommands {
     private static int executeStep(ServerCommandSource source) throws CommandSyntaxException {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
-        if (bl) {
+        if (!bl) {
         source.sendFeedback(() -> {
             return Text.translatable("commands.math.defa.success");
         }, true);
@@ -207,7 +207,7 @@ public class TestReforgedCommands {
     private static int executeStepText(ServerCommandSource source) throws CommandSyntaxException {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
-        if (bl) {
+        if (!bl) {
         source.sendFeedback(() -> {
             return Text.translatable("commands.info.text.success");
         }, true);
@@ -221,7 +221,7 @@ public class TestReforgedCommands {
     private static int executeStepBook(ServerCommandSource source) {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
-        if (bl) {
+        if (!bl) {
         source.sendFeedback(() -> {
             return Text.translatable("commands.info.book.success");
         }, true);
