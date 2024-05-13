@@ -1,3 +1,5 @@
 # Fabric Mod
-### Custom Mod Command
-The fabric module is used to make its own mod commands.
+A fully customized instruction template.
+### ANEXAMPLETEMPLATE
+This is a sample template that can add new instructions on its own, but I'm not sure if it will compile correctly.
+

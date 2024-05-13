@@ -4,6 +4,7 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.LiteralMessage;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.redstone233.reforged.testmod.TestModInfos;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,10 +26,11 @@ public class TestReforgedCommands {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(literal("nbt")
             .requires(src -> src.hasPermissionLevel(4))
-            .then(argument("slot", IntegerArgumentType.integer()))
+            .then(argument("slot", IntegerArgumentType.integer())
             .requires(src -> src.hasPermissionLevel(4))
             .executes(run -> getSuccess(IntegerArgumentType.getInteger(run, "slot"),
                 run.getSource().getPlayer())
+                )
             )
         );
 
@@ -36,9 +38,10 @@ public class TestReforgedCommands {
             .requires(c -> c.hasPermissionLevel(4))
             .then(literal(mainArray[0])
                 .executes(b -> executeStepBook(b.getSource()))
-                .then(argument("value", IntegerArgumentType.integer(TestModInfos.TestModValues.min,TestModInfos.TestModValues.max)))
+                .then(argument("value", IntegerArgumentType.integer(TestModInfos.TestModValues.min,TestModInfos.TestModValues.max))
                 .executes(run -> getText(mainArray[0], IntegerArgumentType.getInteger(run, "value"),
                     run.getSource().getPlayer())
+                    )
                 )
             )
             .then(literal(mainArray[1])
@@ -52,102 +55,131 @@ public class TestReforgedCommands {
 
         dispatcher.register(literal("math")
             .requires(t -> t.hasPermissionLevel(2))
-            .then(literal(typeArray[0]))
+            .then(literal(typeArray[0])
             .executes(a -> executeStepTrig(a.getSource()))
-                .then(literal(typeArray[0])).executes(b -> executeStepTrig(b.getSource()))
-                .then(argument("angle", IntegerArgumentType.integer())
+                .then(literal(nameArray[0])
+                    .executes(b -> executeStepTrig(b.getSource()))
+                        .then(argument("angle", IntegerArgumentType.integer())
                     .executes(run -> runTrig(typeArray[0], nameArray[0],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(nameArray[1])).executes(b -> executeStepTrig(b.getSource()))
-                .then(argument("angle", IntegerArgumentType.integer())
+                )
+                .then(literal(nameArray[1])
+                    .executes(b -> executeStepTrig(b.getSource()))
+                        .then(argument("angle", IntegerArgumentType.integer())
                     .executes(run -> runTrig(typeArray[0], nameArray[1],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(nameArray[2])).executes(b -> executeStepTrig(b.getSource()))
-                .then(argument("angle", IntegerArgumentType.integer())
-                    .executes(run -> runTrig(typeArray[0], nameArray[2],
+                )    
+                .then(literal(nameArray[2])
+                    .executes(b -> executeStepTrig(b.getSource()))
+                        .then(argument("angle", IntegerArgumentType.integer())
+                            .executes(run -> runTrig(typeArray[0], nameArray[2],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(nameArray[3])).executes(b -> executeStepTrig(b.getSource()))
-                .then(argument("angle", IntegerArgumentType.integer())
-                    .executes(run -> runTrig(typeArray[0], nameArray[3],
+                )
+                .then(literal(nameArray[3])
+                    .executes(b -> executeStepTrig(b.getSource()))
+                        .then(argument("angle", IntegerArgumentType.integer())
+                            .executes(run -> runTrig(typeArray[0], nameArray[3],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(nameArray[4])).executes(b -> executeStepTrig(b.getSource()))
-                .then(argument("angle", IntegerArgumentType.integer())
-                    .executes(run -> runTrig(typeArray[0], nameArray[4],
+                )
+                .then(literal(nameArray[4])
+                    .executes(b -> executeStepTrig(b.getSource()))
+                        .then(argument("angle", IntegerArgumentType.integer())
+                            .executes(run -> runTrig(typeArray[0], nameArray[4],
                         IntegerArgumentType.getInteger(run, "angle"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(nameArray[5])).executes(b -> executeStepTrig(b.getSource()))
-                    .then(argument("angle", IntegerArgumentType.integer())
-                    .executes(run -> runTrig(typeArray[0], nameArray[5],
+                )
+                .then(literal(nameArray[5])
+                    .executes(b -> executeStepTrig(b.getSource()))
+                        .then(argument("angle", IntegerArgumentType.integer())
+                            .executes(run -> runTrig(typeArray[0], nameArray[5],
                         IntegerArgumentType.getInteger(run, "angle"),
-                            run.getSource().getPlayer())
+                run.getSource().getPlayer()
+                    )
                 )
             )
+        )
+    )
+        //第2部分
             .requires(src -> src.hasPermissionLevel(2))
-            .then(literal(typeArray[1]))
+            .then(literal(typeArray[1])
             .executes(a -> executeStep(a.getSource()))
-                .then(literal(infoArray[0])).executes(b -> executeStep(b.getSource()))
-                .then(argument("value", IntegerArgumentType.integer())
+                .then(literal(infoArray[0])
+                    .executes(b -> executeStep(b.getSource()))
+                        .then(argument("value", IntegerArgumentType.integer())
                     .executes(run -> runDefe(typeArray[1], infoArray[0],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(infoArray[1])).executes(b -> executeStep(b.getSource()))
-                .then(argument("value", IntegerArgumentType.integer())
-                    .executes(run -> runDefe(typeArray[1], infoArray[1],
+                )
+                .then(literal(infoArray[1])
+                    .executes(b -> executeStep(b.getSource()))
+                        .then(argument("value", IntegerArgumentType.integer())
+                            .executes(run -> runDefe(typeArray[1], infoArray[1],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
                         )
                     )
-                .then(literal(infoArray[2])).executes(b -> executeStep(b.getSource()))
-                .then(argument("value", IntegerArgumentType.integer())
-                    .executes(run -> runDefe(typeArray[2], infoArray[1],
-                        IntegerArgumentType.getInteger(run, "value"),
-                            run.getSource().getPlayer())
-                        )
-                    )
-                .then(literal(infoArray[3])).executes(b -> executeStep(b.getSource()))
-                .then(argument("value", IntegerArgumentType.integer())
-                    .executes(run -> runDefe(typeArray[1], infoArray[3],
-                        IntegerArgumentType.getInteger(run, "value"),
-                            run.getSource().getPlayer())
-                        )
-                    )
-                .then(literal(infoArray[4])).executes(b -> executeStep(b.getSource()))
-                .then(argument("value", IntegerArgumentType.integer())
-                    .executes(run -> runDefe(typeArray[1], infoArray[4],
-                        IntegerArgumentType.getInteger(run, "value"),
-                            run.getSource().getPlayer())
-                        )
-                    )
-                .then(literal(infoArray[5])).executes(b -> executeStep(b.getSource()))
+                )
+                .then(literal(infoArray[2])
+                    .executes(b -> executeStep(b.getSource()))
                     .then(argument("value", IntegerArgumentType.integer())
-                    .executes(run -> runDefe(typeArray[1], infoArray[5],
+                        .executes(run -> runDefe(typeArray[1], infoArray[2],
                         IntegerArgumentType.getInteger(run, "value"),
                             run.getSource().getPlayer())
+                        )
+                    )
+                )
+                .then(literal(infoArray[3])
+                    .executes(b -> executeStep(b.getSource()))
+                        .then(argument("value", IntegerArgumentType.integer())
+                            .executes(run -> runDefe(typeArray[1], infoArray[3],
+                        IntegerArgumentType.getInteger(run, "value"),
+                            run.getSource().getPlayer())
+                        )
+                    )
+                )
+                .then(literal(infoArray[4])
+                .executes(b -> executeStep(b.getSource()))
+                    .then(argument("value", IntegerArgumentType.integer())
+                        .executes(run -> runDefe(typeArray[1], infoArray[4],
+                        IntegerArgumentType.getInteger(run, "value"),
+                            run.getSource().getPlayer())
+                        )
+                    )
+                )
+                .then(literal(infoArray[5])
+                    .executes(b -> executeStep(b.getSource()))
+                        .then(argument("value", IntegerArgumentType.integer())
+                            .executes(run -> runDefe(typeArray[1], infoArray[5],
+                        IntegerArgumentType.getInteger(run, "value"),
+                run.getSource().getPlayer()
+                    )
                 )
             )
-        );
-    }
+        )
+        )
+    );
+}
 
-    private static int executeStepTrig(ServerCommandSource source) {
+    private static int executeStepTrig(ServerCommandSource source) throws CommandSyntaxException {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
-        if (bl) {
+        if (!bl) {
         source.sendFeedback(() -> {
             return Text.translatable("commands.math.trip.success");
         }, true);
@@ -158,10 +190,10 @@ public class TestReforgedCommands {
         }
     }
 
-    private static int executeStep(ServerCommandSource source) {
+    private static int executeStep(ServerCommandSource source) throws CommandSyntaxException {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
-        if (bl) {
+        if (!bl) {
         source.sendFeedback(() -> {
             return Text.translatable("commands.math.defa.success");
         }, true);
@@ -172,10 +204,10 @@ public class TestReforgedCommands {
         }
     }
 
-    private static int executeStepText(ServerCommandSource source) {
+    private static int executeStepText(ServerCommandSource source) throws CommandSyntaxException {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
-        if (bl) {
+        if (!bl) {
         source.sendFeedback(() -> {
             return Text.translatable("commands.info.text.success");
         }, true);
@@ -189,7 +221,7 @@ public class TestReforgedCommands {
     private static int executeStepBook(ServerCommandSource source) {
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         boolean bl = serverTickManager.stopStepping();
-        if (bl) {
+        if (!bl) {
         source.sendFeedback(() -> {
             return Text.translatable("commands.info.book.success");
         }, true);
@@ -201,7 +233,7 @@ public class TestReforgedCommands {
     }
 
 
-    private static int getText(String type, int value, PlayerEntity player) {
+    private static int getText(String type, int value, PlayerEntity player) throws CommandSyntaxException {
         if (type == null) {
             player.sendMessage((Text) new LiteralMessage(type));
             player.sendMessage((Text) new LiteralMessage("This Commands running failed!"), false);
@@ -229,17 +261,18 @@ public class TestReforgedCommands {
             }
         } else if (type == "text") {
             player.sendMessage((Text) new LiteralMessage(TestModInfos.TestModTexts.a));
-            //return Command.SINGLE_SUCCESS;
+            return Command.SINGLE_SUCCESS;
         }
-        return 1;
+        return 0;
     }
 
-    private static int runTrig(String type, String name, double angle, PlayerEntity player) {
+    private static int runTrig(String type, String name, double angle, PlayerEntity player) throws CommandSyntaxException {
         // String[] typeArray = {"trifunc","deffunc"};
         // String[] nameArray = { "sin", "cos", "tan", "asin", "acos", "atan" };
         double value = Math.toRadians(angle);
-        if (type == null || name == null || angle == value) {
+        if (type == null || name == null || angle != value) {
             player.sendMessage((Text) new LiteralMessage("This command runninng error!"), false);
+            return 0;
         } else if (type == typeArray[0]) {
             if (name == nameArray[0]) {
                 player.sendMessage((Text) new LiteralMessage("Angle" + angle + "sine is" + Math.sin(value)), false);
@@ -266,10 +299,11 @@ public class TestReforgedCommands {
         return 0;
     }
 
-    private static int runDefe(String type, String name, double value, PlayerEntity player) {
+    private static int runDefe(String type, String name, double value, PlayerEntity player) throws CommandSyntaxException {
         //String[] infoArray = { "abs", "sqrt", "cbrt", "ceil", "floor", "round" };
         if (type == null || name == null || value == 0) {
             player.sendMessage((Text) new LiteralMessage("This command runninng error!"), false);
+            return 0;
         } else if (type == typeArray[1]) {
             if (name == infoArray[0]) {
                 player.sendMessage((Text) new LiteralMessage("Value" + value + "absolute value is" + Math.abs(value)),
@@ -300,7 +334,7 @@ public class TestReforgedCommands {
         return 0;
     }
 
-    public static int getSuccess(int slot, PlayerEntity player) {
+    public static int getSuccess(int slot, PlayerEntity player) throws CommandSyntaxException {
         if (slot >= 0 && slot <= 40) {
             ItemStack stack = player.getInventory().getStack(slot);
             if (stack.hasNbt()) {
